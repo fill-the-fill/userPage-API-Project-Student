@@ -12,6 +12,48 @@
 </head>
 
 <body>
+    <script id="user-template" type="text/x-handlebars">
+        <i id="loadLastUser" class="fas fa-chevron-circle-left"></i>
+        <img id="profile-pic" src="{{profilePic}}">
+        <div class="user-info" data-id="{{id}}">
+            <p class="user-info">{{firstName}} {{lastName}}</p>
+            <br>
+            <p class="user-info">{{city}}, {{country}}</p>
+        </div>
+    </script>
+
+    <script id="friends-template" type="text/x-handlebars">
+        <ul>
+            {{#each friend}}
+                <li><img class="friends-pic" src="{{friendsPic}}"><p>{{firstName}} {{lastName}}</p></li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script id="quote-template" type="text/x-handlebars">
+        <p>Favorite Quote:</p> 
+        <span>"{{quote}}"<br>- Kanye West</span>
+    </script>
+
+    <script id="pokemon-template" type="text/x-handlebars">
+        <img id="pokemon-image" src={{img}}>
+        <p id="pokemon-text">Favorite Pokemon:  {{name}}</p>
+    </script>
+
+    <script id="aboutMe-template" type="text/x-handlebars">
+        <div  class="meat-text">
+            <p>About me:</p>
+            <p>{{quote}}</p>
+        </div>
+    </script>
+
+    <script id="dropDown-template" type="text/x-handlebars">
+        {{#each data}}
+            <option data-id="{{userId}}">{{mainUser.firstName}} {{mainUser.lastName}}</option>
+        {{/each}}
+    </script>
+
+
     <div class="container">	
         <div class="user-container"></div>	
         <div class="quote-container"></div>	
@@ -25,10 +67,22 @@
             </div>	
         </div>	
         <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
+            <button id="loadData">Load User Data</button>	
+            <button id="displayData">Display User</button>
+            <button id="saveUserPage">Save To Favorites</button>
+            <button id="loadUserPage">Load From Favorites</button>
+            <select id="drop-down" required>
+                <option value="" disabled selected hidden>Choose From Favorites...</option>
+            </select>	
         </div>	
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script src="APIManager.js"></script>
+<script src="Renderer.js"></script>
+<script src="main.js"></script>
+
+
 
 </html>
